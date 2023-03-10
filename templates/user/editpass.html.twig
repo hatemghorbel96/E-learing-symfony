@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	
+<!-- =======================
+Page Banner START -->
+
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+Page content START -->
+<section class="pt-0">
+	<div class="container">
+		<div class="row">
+
+			<!-- Left sidebar START -->
+			{% include 'user/menu.html.twig' %}
+			<!-- Left sidebar END -->
+
+			<!-- Main content START -->
+			<div class="col-xl-9">
+				<!-- Edit profile START -->
+			
+				<!-- Edit profile END -->
+				
+				<div class="row g-4 mt-3">
+				
+
+		
+					<!-- Password change START -->
+					<div class="col-lg-12">
+						<div class="card border bg-transparent rounded-3">
+							<!-- Card header -->
+							<div class="card-header bg-transparent border-bottom">
+								<h5 class="card-header-title mb-0">Update password</h5>
+							</div>
+							<!-- Card body START -->
+							<div class="card-body">
+								<!-- Current password -->
+								<div class="mb-3">
+									<label class="form-label">Current password</label>
+									<input class="form-control" type="password" placeholder="Enter current password">
+								</div>
+								<!-- New password -->
+								<div class="mb-3">
+									<label class="form-label"> Enter new password</label>
+									<div class="input-group">
+										<input class="form-control" type="password" placeholder="Enter new password">
+										<span class="input-group-text p-0 bg-transparent">
+											<i class="far fa-eye cursor-pointer p-2 w-40px"></i>
+										</span>
+									</div>
+									<div class="rounded mt-1" id="psw-strength"></div>
+								</div>
+								<!-- Confirm password -->
+								<div>
+									<label class="form-label">Confirm new password</label>
+									<input class="form-control" type="password" placeholder="Enter new password">
+								</div>
+								<!-- Button -->
+								<div class="d-flex justify-content-end mt-4">
+									<button type="button" class="btn btn-primary mb-0">Change password</button>
+								</div>
+							</div>
+							<!-- Card body END -->
+						</div>
+					</div>
+					<!-- Password change end -->
+				</div>
+			</div>
+			<!-- Main content END -->
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+{% endblock %}

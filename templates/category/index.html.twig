@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+{% block body %}
+
+<main>
+
+
+<section>
+	<div class="container">
+		<!-- Title -->
+		<div class="row mb-4">
+			<div class="col-lg-8 mx-auto text-center">
+				<h2>Choose a Categories</h2>
+				<p class="mb-0">Perceived end knowledge certainly day sweetness why cordially</p>
+			</div>
+		</div>
+
+		<div class="row g-4">
+		
+		{% for c in categories %}
+			<div class="col-sm-6 col-md-4 col-xl-3">
+				<div class="card card-body bg-success bg-opacity-10 text-center position-relative btn-transition p-4">
+					<!-- Image -->
+					<div class="icon-xl bg-body mx-auto rounded-circle mb-3">
+						<img src="/uploads/{{c.img}}" alt="{{c.nom}}">
+					</div>
+					<!-- Title -->
+					<h5 class="mb-2"><a href="{{path('courses',{'id':c.id})}}" class="stretched-link">{{c.nom}}</a></h5>
+					<h6 class="mb-0">{{c.courses | length}} Course</h6>
+				</div>
+			</div>
+		{% endfor %}
+
+		</div>
+	</div>
+</section>
+
+
+
+</main>
+
+{% endblock %}

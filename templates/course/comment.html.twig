@@ -1,0 +1,229 @@
+
+							<!-- Content START -->
+							<div class="tab-pane fade show active" id="course-pills-2" role="tabpanel" aria-labelledby="course-pills-tab-2">
+								<!-- Review START -->
+								<div class="row mb-4">
+									<h5 class="mb-4">Our Student Reviews</h5>
+
+									<!-- Rating info -->
+									<div class="col-md-12 mb-3 mb-md-0">
+										<div class="text-center">
+											<!-- Info -->
+											<h2 class="mb-0">{{course.comments | length}}</h2>
+											<!-- Star -->
+											<ul class="list-inline mb-0">
+
+												 {% for i in 1..5 %}
+												  {% if i <= course.getAvgRating %} 
+												<li class="list-inline-item me-0"><i class="fas fa-star text-warning"></i></li>
+												{% else %}											
+												<li class="list-inline-item me-0"><i class="far fa-star text-warning"></i></li>
+												{% endif %}
+                                 			 {% endfor %}
+											</ul>
+											<p class="mb-0">(Calculated on {{course.comments | length}} reviews)</p>
+										</div>
+									</div>
+
+									<!-- Progress-bar and star -->
+									<div class="col-md-12 mt-3">
+										<div class="row align-items-center text-center">
+											<!-- Progress bar and Rating -->
+											<div class="col-6 col-sm-8">
+												<!-- Progress item -->
+												<div class="progress progress-sm bg-warning bg-opacity-15">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-sm-4">
+												<!-- Star item -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+												</ul>
+											</div>
+
+											<!-- Progress bar and Rating -->
+											<div class="col-6 col-sm-8">
+												<!-- Progress item -->
+												<div class="progress progress-sm bg-warning bg-opacity-15">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-sm-4">
+												<!-- Star item -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+												</ul>
+											</div>
+
+											<!-- Progress bar and Rating -->
+											<div class="col-6 col-sm-8">
+												<!-- Progress item -->
+												<div class="progress progress-sm bg-warning bg-opacity-15">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-sm-4">
+												<!-- Star item -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+												</ul>
+											</div>
+
+											<!-- Progress bar and Rating -->
+											<div class="col-6 col-sm-8">
+												<!-- Progress item -->
+												<div class="progress progress-sm bg-warning bg-opacity-15">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-sm-4">
+												<!-- Star item -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+												</ul>
+											</div>
+
+											<!-- Progress bar and Rating -->
+											<div class="col-6 col-sm-8">
+												<!-- Progress item -->
+												<div class="progress progress-sm bg-warning bg-opacity-15">
+													<div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-sm-4">
+												<!-- Star item -->
+												<ul class="list-inline mb-0">
+													<li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+													<li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Review END -->
+{% if app.user %}
+<div class="mt-2">
+									<h5 class="mb-4">Leave a Review</h5>
+									<div class="row g-3">
+										<!-- Name -->
+									{{ form_start(form) }}
+								
+										<!-- Rating -->
+										<div class="col-12">
+									
+											{{form_widget(form.rating)}}
+
+										</div>
+										<!-- Message -->
+										<div class="col-12 mt-3">
+										{{form_widget(form.content)}}
+										</div>
+										<!-- Button -->
+										<div class="col-12 mt-3">
+											<button type="submit" class="btn btn-primary mb-0">Post Review</button>
+										</div>
+										{{ form_end(form) }}
+									</div>
+								</div>
+{% else %}
+
+<div class="mt-2">
+									<h5 class="mb-4">Leave a Review</h5>
+									<div class="row g-3">
+										<!-- Name -->
+									{{ form_start(form) }}
+								
+										<!-- Rating -->
+										<div class="col-12">
+									
+											{{form_widget(form.rating)}}
+
+										</div>
+										<!-- Message -->
+										<div class="col-12 mt-3">
+										{{form_widget(form.content)}}
+										</div>
+										<!-- Button -->
+										<div class="col-12 mt-3">
+											<button type="submit" class="btn btn-primary mb-0" disabled="disabled">Login to comment</button> <a href="{{path('app_login')}}">here.</a> 
+										</div>
+										{{ form_end(form) }}
+									</div>
+								</div>
+
+	{% endif %}
+
+								<!-- Student review START -->
+			 {% if course.comments | length > 0 %}             
+              {% for comment in course.comments |sort((b, a) => a.createdAt <=> b.createdAt) %}					
+								<div class="row">
+									<!-- Review item START -->
+									<div class="d-md-flex my-4">
+										<!-- Avatar -->
+										<div class="avatar avatar-xl me-4 flex-shrink-0">
+											<img class="avatar-img rounded-circle" src="{{asset('assets/hatem.jpg')}}" alt="avatar">
+										</div>
+										<!-- Text -->
+										<div>
+											<div class="d-sm-flex mt-1 mt-md-0 align-items-center">
+												<h5 class="me-3 mb-0">{{comment.user.nom}} {{comment.user.prenom}}</h5>
+												<!-- Review star -->
+												<ul class="list-inline mb-0">
+													 {% for i in 1..5 %}
+														{% if i <= comment.rating %} 
+														<li class="list-inline-item me-0"><i class="fas fa-star text-warning"></i></li>
+														{% else %}											
+														<li class="list-inline-item me-0"><i class="far fa-star text-warning"></i></li>
+														{% endif %}
+													{% endfor %}
+												</ul>
+											</div>
+											<!-- Info -->
+											<p class="small mb-2">{{comment.createdAt ? comment.createdAt|date('F j, Y, g:i a')}}</p>
+											<p class="mb-2">{{comment.content}}. </p>
+											
+										
+										</div>
+									</div>
+									<!-- Divider -->
+									<hr>
+								
+								</div>
+			  {% endfor %}
+
+          {% else %}
+		  <div class="alert alert-success mt-3">
+          <h3> This post has no comments yet.</h3></div>
+          {% endif %}					
+
+							</div>

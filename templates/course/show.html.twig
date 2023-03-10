@@ -1,0 +1,211 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CourceController!{% endblock %}
+
+{% block body %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Page content START -->
+<section class="pt-3 pt-xl-5">
+{% for label,messages in app.flashes %}
+                                    <div class="container">
+                                        <div class="alertt alert alert-{{ label }}">
+                                            {% for message in messages %}
+                                                <p>{{ message }}</p>
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+                                {% endfor %}
+
+
+	<div class="container" data-sticky-container>
+		<div class="row g-4">
+			<!-- Main content START -->
+			<div class="col-xl-8">
+
+				<div class="row g-4">
+					<!-- Title START -->
+					<div class="col-12">
+						<!-- Title -->
+						<a href="{{path('show_course',{'id':course.id})}}">
+						<h2>{{course.nom}}</h2></a>
+						<p>{{course.description}}</p>
+						<!-- Content -->
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star me-2"></i>{{course.getAvgRating | number_format(0)}}/5.0</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate me-2"></i>{{course.follows | length}} Enrolled</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-signal me-2"></i>{{course.difficulte}}</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="bi bi-patch-exclamation-fill me-2"></i>Last updated {{course.createdAt |date("m/d/Y") }}</li>
+							<li class="list-inline-item fw-light h6"><i class="fas fa-globe me-2"></i>{{course.language}}</li>
+							<li class="list-inline-item fw-light h6">
+							  
+									 </li>
+						</ul>
+						
+										{% if app.user %}
+
+										{% for f in course.follows %}
+													{% if f.id == app.user.id %}
+											<a href="{{ path('unfollow', {'id': course.id}) }}" class="btn btn-success mt-3"><i class="fas fa-check-circle"></i> following</a>
+											{% else %}
+												<a href="{{ path('follow', {'id': course.id}) }}" class="btn btn-success mt-3"><i class="fas fa-plus-square"></i> follow</a>
+												{% endif %}
+												{% else %}
+												<a href="{{ path('follow', {'id': course.id}) }}" class="btn btn-success mt-3"><i class="fas fa-plus-square"></i> follow</a>
+												{% endfor %}
+									 {% else %}
+									<button href="{{ path('follow', {'id': course.id}) }}" class="btn btn-success mt-3" disabled="disabled"><i class="fas fa-plus-square"></i> follow</button>
+									 {% endif %} 
+
+  									{% if app.user %}
+
+   
+										{% for f in course.favorit %}
+													{% if f.id == app.user.id %}
+											<a href="{{ path('annule_fav', {'id': course.id}) }}" class="btn btn-danger mt-3"><i class="fas fa-heart text-white"></i></a>
+											{% else %}
+												<a href="{{ path('add_fav', {'id': course.id}) }}" class="btn btn-outline-danger mt-3"><i class="far fa-heart " style="color:danger"></i></a>
+												{% endif %}
+												{% else %}
+												<a href="{{ path('add_fav', {'id': course.id}) }}" class="btn btn-outline-danger mt-3"><i class="far fa-heart " style="color:danger"></i></a>
+												{% endfor %}
+									 {% else %}
+									<button href="{{ path('add_fav', {'id': course.id}) }}" class="btn btn-outline-danger mt-3" disabled="disabled"><i class="far fa-heart " style="color:danger"></i></button>
+									 {% endif %} 
+					</div>
+					<!-- Title END -->
+
+					<!-- Image and video -->
+					<div class="col-12 position-relative">
+						<div class="video-player rounded-3 text-center">
+							
+								<!-- Caption files -->
+						
+							<img src="/uploads/{{course.img}}" class="img-responsive " alt="">
+							
+						</div>
+					</div>
+
+				
+
+					<!-- Curriculum START -->
+					<div class="col-12">
+						<div class="card border rounded-3">
+							<!-- Card header START -->
+							<div class="card-header border-bottom">
+								<h3 class="mb-0">List</h3>
+								<div class="overflow-hidden">
+															
+														</div>
+							</div>
+							
+							<!-- Card header END -->
+		
+		        	
+			 {{ render(controller('App\\Controller\\CourseController::lista',{'id': course.id})) }}					
+										
+							
+						</div>
+					</div>
+					<!-- Curriculum END -->
+
+				
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			<div class="col-xl-4">
+				<div data-sticky data-margin-top="80" data-sticky-for="768">
+					<div class="row g-4">
+						<div class="col-md-6 col-xl-12">
+							<!-- Course info START -->
+							<div class="card card-body border p-4">
+
+				
+
+								<!-- Title -->
+								<h5 class="mb-3">This course includes</h5>
+								<ul class="list-group list-group-borderless border-0">
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Lectures</span>
+										<span>{{course.videos | length}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-clock text-primary"></i>Duration</span>
+										<span>{{course.houres}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-signal text-primary"></i>Skills</span>
+										<span>{{course.difficulte}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-globe text-primary"></i>Language</span>
+										<span>{{course.language}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-cloud-upload-alt text-primary"></i>Uploaded</span> 
+										<span>{{course.createdAt | date('d/m/Y')}}</span>
+									</li>
+									
+								</ul>
+								<!-- Divider -->
+								<hr>
+
+								<!-- Instructor info -->
+							
+
+							
+							</div>
+							<!-- Course info END -->
+						</div>
+
+						
+						<!-- Tabs START -->
+						<ul class="nav nav-pills nav-pills-bg-soft px-3" id="course-pills-tab" role="tablist">
+							<!-- Tab item -->
+						
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4" role="presentation">
+								<button class="nav-link mb-0 show active" id="course-pills-tab-2" data-bs-toggle="pill" data-bs-target="#course-pills-2" type="button" role="tab" aria-controls="course-pills-2" aria-selected="false">Reviews</button>
+							</li>
+						
+							
+						</ul>
+						<!-- Tabs END -->
+
+						<!-- Tab contents START -->
+						<div class="tab-content pt-4 px-3" id="course-pills-tabContent">
+							<!-- Content START -->
+						
+							<!-- Content END -->
+   							{{ render(controller('App\\Controller\\CourseController::comment',{'id': course.id})) }} 
+							<!-- Content END -->
+
+						
+
+							<!-- Content START -->
+							
+							<!-- Content END -->
+						</div>
+						<!-- Tab contents END -->
+					
+					<!-- Course detail END -->
+						<!-- Tags END -->
+					</div><!-- Row End -->
+				</div>	
+			</div>
+			<!-- Right sidebar END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+
+{% endblock %}

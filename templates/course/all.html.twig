@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CourceController!{% endblock %}
+
+{% block body %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+
+<!-- =======================
+Page Banner START -->
+<section class="bg-dark align-items-center d-flex" style="background:url(assets/images/pattern/04.png) no-repeat center center; background-size:cover;">
+	<!-- Main banner background image -->
+	<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<!-- Title -->
+					<h1 class="text-white">Course List Minimal</h1>
+					<!-- Breadcrumb -->
+					<div class="d-flex">
+						<nav aria-label="breadcrumb">
+							<ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Courses</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+	</div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+Page content START -->
+<section class="pt-5">
+	<div class="container">
+	
+			
+		<div class="row">
+			
+			<div class="col-5 mb-5">
+			{{form_start(form)}}
+				<div class="border rounded p-2">
+					<div class="input-group input-borderless">
+						
+							{{form_row(form.string)}}
+					</div>
+				</div>
+			</div>
+
+	
+			<div class="col-5 mb-5">
+				<div class="border rounded p-2 input-borderless">
+				
+						{{form_row(form.technologies)}}
+				
+				</div>
+			</div>
+
+		
+
+		
+			<div class="col-2 mb-5">
+				<button type="submit" class="btn btn-lg btn-primary mb-0">Filter Results</button>
+			</div>	{{form_end(form)}}
+		</div>
+	
+
+		<div class="row g-4 justify-content-center">
+
+			{% for c in courses %}
+			<div class="col-lg-10 col-xxl-6">
+				<div class="card rounded overflow-hidden shadow">
+					<div class="row g-0">
+						<!-- Image -->
+						<div class="col-md-4">
+							<img src="/uploads/{{c.img}}" alt="{{c.nom}}">
+						</div>
+
+						<!-- Card body -->
+						<div class="col-md-8">
+							<div class="card-body">
+								<!-- Title -->
+								<div class="d-flex justify-content-between mb-2">
+									<h5 class="card-title mb-0"><a href="{{path('show_course',{'id':c.id})}}">{{c.nom}}</a></h5>
+									<!-- Wishlist icon -->
+									<a href="#"><i class="fas fa-heart text-danger"></i></a>
+								</div>
+								<!-- Content -->
+								<!-- Info -->
+								<ul class="list-inline mb-1">
+									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="far fa-clock text-danger me-2"></i>{{c.houres}}</li>
+									<li class="list-inline-item h6 fw-light mb-1 mb-sm-0"><i class="fas fa-table text-orange me-2"></i>{{c.videos | length}} lectures</li>
+									<li class="list-inline-item h6 fw-light"><i class="fas fa-signal text-success me-2"></i>{{c.difficulte}}</li><br>
+									<li class="list-inline-item h6 fw-light"><i class="fas fa-globe text-info me-2"></i>{{c.language}}</li>
+								</ul>
+								<!-- Rating -->
+								<ul class="list-inline mb-0">
+									 {% for i in 1..5 %}
+														{% if i <= c.getAvgRating %} 
+														<li class="list-inline-item me-0"><i class="fas fa-star text-warning"></i></li>
+														{% else %}											
+														<li class="list-inline-item me-0"><i class="far fa-star text-warning"></i></li>
+														{% endif %}
+													{% endfor %}
+									<li class="list-inline-item ms-2 h6 fw-light">{{c.getAvgRating | number_format(0)}}/5.0</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- Course list END -->
+
+		<!-- Pagination START -->
+		<div class="col-12">
+			<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+				<ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+					<li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-double-left"></i></a></li>
+					<li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+					<li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+					<li class="page-item mb-0"><a class="page-link" href="#">..</a></li>
+					<li class="page-item mb-0"><a class="page-link" href="#">6</a></li>
+					<li class="page-item mb-0"><a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a></li>
+				</ul>
+			</nav>
+		</div>
+		<!-- Pagination END -->
+
+	</div>
+</section>
+
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+{% endblock %}

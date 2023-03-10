@@ -1,0 +1,206 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CourceController!{% endblock %}
+
+{% block body %}
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+{# {% block stylesheets %}
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/font-awesome/css/all.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+
+	<link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/plyr/plyr.css')}}" />
+	
+    	<link  rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+		{% endblock %}
+			
+			{% block javascripts %}
+   <script src="{{asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+
+        <!-- Vendors -->
+        <script src="{{asset('assets/vendor/tiny-slider/tiny-slider.js')}}"></script>
+        <script src="{{asset('assets/vendor/glightbox/js/glightbox.js')}}"></script>
+        <script src="{{asset('assets/vendor/purecounterjs/dist/purecounter_vanilla.js')}}"></script>
+        <script src="{{asset('assets/vendor/sticky-js/sticky.min.js')}}"></script>
+		<script src="{{asset('assets/vendor/plyr/plyr.js')}}"></script>
+				
+		<script src="{{asset('assets/js/functions.js')}}"></script>
+{% endblock %} #}
+<!-- =======================
+Page content START -->
+<section class="pt-3 pt-xl-5">
+{% for label,messages in app.flashes %}
+                                    <div class="container">
+                                        <div class="alertt alert alert-{{ label }}">
+                                            {% for message in messages %}
+                                                <p>{{ message }}</p>
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+   {% endfor %}
+	<div class="container" data-sticky-container>
+		<div class="row g-4">
+			<!-- Main content START -->
+			<div class="col-xl-8">
+
+				<div class="row g-4">
+					<!-- Title START -->
+					<div class="col-12">
+						<!-- Title -->
+						<a href="{{path('show_course',{'id':video.course.id})}}">
+						<h2>{{video.course.nom}}</h2></a>
+						<p>{{video.course.description}}</p>
+						<!-- Content -->
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-star me-2"></i>{{video.course.getAvgRating | number_format(0)}}/5.0</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-user-graduate me-2"></i>{{video.course.follows | length}} Enrolled</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="fas fa-signal me-2"></i>{{video.course.difficulte}}</li>
+							<li class="list-inline-item fw-light h6 me-3 mb-1 mb-sm-0"><i class="bi bi-patch-exclamation-fill me-2"></i>Last updated {{video.course.createdAt |date("m/d/Y") }}</li>
+							<li class="list-inline-item fw-light h6"><i class="fas fa-globe me-2"></i>{{video.course.language}}</li>
+						</ul>
+					</div>
+
+	
+			
+							<iframe width="790" height="515" src="{{video.url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                            </iframe>
+				
+
+					<!-- Curriculum START -->
+					<div class="col-12">
+						<div class="card border rounded-3">
+							<!-- Card header START -->
+							<div class="card-header border-bottom">
+							<div class="row">
+							<div class="col-9 position-relative">
+								<h3 class="mb-0">List </h3>
+								</div>
+											<div class="col-3 position-relative">
+											<div class="video-player rounded-3">
+												
+												<a data-glightbox data-gallery="office-tour" href="{{video.url}}" class="ms-0 ms-sm-4 d-block">
+												<div class="btn btn-round btn-primary-shadow mb-0 me-3 align-middle d-inline-block"> <i class="bi bi-fullscreen"></i></div>
+												<div class="align-middle d-inline-block">
+													<h6 class="mb-0 fw-normal">Full screen</h6>
+												</div>
+												</a>
+
+												
+												
+											</div>
+										</div></div>
+								
+							</div>
+							<!-- Card header END -->
+		
+		       {{ render(controller('App\\Controller\\CourseController::lista',{'id': video.course.id})) }}	
+						</div>
+					</div>
+					<!-- Curriculum END -->
+
+				
+				</div>
+			</div>
+			<!-- Main content END -->
+
+			<!-- Right sidebar START -->
+			<div class="col-xl-4">
+				<div data-sticky data-margin-top="80" data-sticky-for="768">
+					<div class="row g-4">
+						<div class="col-md-6 col-xl-12">
+							<!-- Course info START -->
+							<div class="card card-body border p-4">
+
+				
+
+								<!-- Title -->
+								<h5 class="mb-3">This course includes</h5>
+								<ul class="list-group list-group-borderless border-0">
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-book-open text-primary"></i>Lectures</span>
+										<span>{{video.course.videos | length}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-clock text-primary"></i>Duration</span>
+										<span>{{video.course.houres}}</span>
+									</li>
+										<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-signal text-primary"></i>Skills</span>
+										<span>{{video.course.difficulte}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-globe text-primary"></i>Language</span>
+										<span>{{video.course.language}}</span>
+									</li>
+									<li class="list-group-item px-0 d-flex justify-content-between">
+										<span class="h6 fw-light mb-0"><i class="fas fa-fw fa-cloud-upload-alt text-primary"></i>Uploaded</span> 
+										<span>{{video.course.createdAt | date('d/m/Y')}}</span>
+									</li>
+								
+								</ul>
+								<!-- Divider -->
+								<hr>
+
+								<!-- Instructor info -->
+							
+
+							
+							</div>
+							<!-- Course info END -->
+						</div>
+
+						<div class="col-12">
+						<!-- Tabs START -->
+						<ul class="nav nav-pills nav-pills-bg-soft px-3" id="course-pills-tab" role="tablist">
+							<!-- Tab item -->
+						
+							<!-- Tab item -->
+							<li class="nav-item me-2 me-sm-4 show active" role="presentation">
+								<button class="nav-link mb-0" id="course-pills-tab-2" data-bs-toggle="pill" data-bs-target="#course-pills-2" type="button" role="tab" aria-controls="course-pills-2" aria-selected="false">Reviews</button>
+							</li>
+						
+						
+						</ul>
+						<!-- Tabs END -->
+
+						<!-- Tab contents START -->
+						<div class="tab-content pt-4 px-3" id="course-pills-tabContent">
+							<!-- Content START -->
+						
+							<!-- Content END -->
+
+						
+							<!-- Content START -->
+				{{ render(controller('App\\Controller\\CourseController::commentvideo',{'id': video.course.id})) }} 
+							<!-- Content END -->
+
+						
+
+							<!-- Content START -->
+						
+							<!-- Content END -->
+						</div>
+						<!-- Tab contents END -->
+					</div>
+					<!-- Course detail END -->
+						<!-- Tags END -->
+					</div><!-- Row End -->
+				</div>	
+			</div>
+			<!-- Right sidebar END -->
+
+		</div><!-- Row END -->
+	</div>
+</section>
+<!-- =======================
+Page content END -->
+
+</main>
+			
+{% endblock %}
+	
+	
+
+					
+	

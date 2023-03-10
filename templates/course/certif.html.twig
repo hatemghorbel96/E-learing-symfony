@@ -1,0 +1,64 @@
+
+	<style>
+		.signature,
+		.title {
+			float: left;
+			border-top: 1px solid #000;
+			width: 200px;
+			text-align: center;
+		}
+	</style>
+	<div style="width:1000px; height:600px; padding:20px; text-align:center; border: 10px solid #787878">
+		<div style="width:950px; height:550px; padding:20px; text-align:center; border: 5px solid #787878; background-color:#FAEBD7">
+			<span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
+			<br><br>
+			<span style="font-size:25px">
+				<i></i>
+			</span>
+			<br><br>
+			<span style="font-size:30px">
+				<b>{{p.user.nom}}
+					{{p.user.prenom}}</b>
+			</span><br/><br/>
+			<span style="font-size:25px">
+				<i>has completed the course</i>
+			</span>
+			<br/><br/>
+			<span style="font-size:30px">{{p.course.nom}}</span>
+			<br/><br/>
+			<span style="font-size:20px">Length: {{p.course.houres}}</b>
+		</span>
+		<br/><br/><br/><br/>
+		<span style="font-size:25px">
+			<i>Completed Date</i>
+		</span><br>
+		<span style="font-size:25px">
+			<i>01-jul-2022</i>
+		</span><br>
+		<table style="margin-top:40px;float:left">
+			<tr>
+				<td>
+					<span>
+						<b>{{p.user.nom}}
+							{{p.user.prenom}}</b>
+					</td>
+				</td>
+			</tr>
+			<tr>
+				<td style="width:200px;float:left;border:0;border-bottom:1px solid #000;"></td>
+			</tr>
+			<tr>
+				<td style="text-align:center">
+					<span>
+						<b>Signature</b>
+					</td>
+				</td>
+			</tr>
+		</table>
+		<table style="margin-top:40px;float:right">
+			<img src="https://hatemghorbel.herokuapp.com/img/HG-DEV.png" style="width:150px;height:50px" alt="">
+		</table>
+	</div>
+</div>
+
+ 
